@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML Model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+</head>
+
+<body style="background-color:#F6E7D8">
+  <nav class="navbar navbar-expand-lg navbar-dark rounded-lg" id="navbarchange">
+    <a class="navbar-brand" href="#">RedFL<i class="fas fa-tint"></i>W</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</span></a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Blood Bank
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/AddCamp/index.html">Add Blood Bank</a>
+            <a class="dropdown-item" href="/AddDonor/index.html">Add Donor Database</a>
+            <a class="dropdown-item" href="/AnalysisBank/index.html">Analysis</a>
+            <a class="dropdown-item" href="/AnalysisBank/predictionIndex.html">Prediction</a>
+            <a class="dropdown-item" href="/BloodBankCSV/index.html">View Uploaded CSV</a>
+            <a class="dropdown-item" href="/BloodBankList/index.html">Blood Banks List</a>
+          </div> -->
+        <!-- </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hospitals
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/AddHospital/index.html">Add Hospital</a>
+            <a class="dropdown-item" href="/Analysis/index.html">Analysis</a>
+            <a class="dropdown-item" href="/Analysis/predictionIndex.html">Prediction</a>
+            <a class="dropdown-item" href="/Query/index.html">Query</a>
+            <a class="dropdown-item" href="/HospitalList/index.html">Hospitals List</a>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+</nav>
+
+
+ <div class="login" id="login">
+   <br>
+	<h1>BLOOD DONATION PREDICTION SYSTEM</h1>
+    <br>
+    <br>
+    <br>
+    
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post" class="form" id="quad">
+      
+      <div class="input-quad">
+        <label for="name">Months since last donation
+    	  <input class="enter" type="text" name="months_since_last" placeholder="" required="required" size="30">
+        </label>
+
+      
+        <label for="name">No. of donations
+        <input class="enter" type="text" name="no_of_donations" placeholder="" required="required" size="30">
+        </label>
+
+        <label for="name">Total Volume Donated (c.c.)
+        <input class="enter" type="text" name="total_volume" placeholder="" required="required" size="30">
+        </label>
+
+        <label for="name">Months since first donation
+        <input class="enter" type="text" name="months_since_first" placeholder="" required="required" size="30" >
+        </label>
+
+        <button class="submit" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+      </div>
+    </form>
+    <br>
+    <div>
+      <!-- <button class="submit" type="submit" class="btn btn-primary btn-block btn-large">Predict</button> -->
+  
+      <br>
+  
+     <br>
+     <h3 class="positive">If output = 1 : The donor will donate</h3>
+     <h3 class="negative">If output = 0 : The donor will not donate</h3>
+     <br>
+     <br>
+     <br>
+     <h2>{{ prediction_text }}</h2>
+     </div>
+     
+ </div>
+
+
+</body>
+</html>
