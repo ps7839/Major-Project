@@ -44,4 +44,3 @@ def predict_api():
 if __name__ == "__main__":
     app.run(debug=True)
     
-#https://mighty-tundra-22355.herokuapp.com
